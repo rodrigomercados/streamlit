@@ -1,17 +1,13 @@
-import streamlit as st
 import pandas as pd
-import altair as alt
+import plotly.express as px
+import streamlit as st
 
-@st.cache
-def get_UN_data():
-  AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
-  df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
-  return df.set_index("Region")
+st.set_page_config(page_title="Sales Dashboard",page_icon=":bar_chart:", layout="wide")
 
-df = get_UN_data()
-
-countries = st.multiselect("Chose countries", list(df.index),["China"])
-data = df.loc[countries]
-data /= 1000000.0
-st.write("### Gross Agricultural Production ($B)", data.sort_index())
-         
+df=pd.read_excel(
+	io='Libro1.xlsx',
+	engine='openpyxl',
+	sheet_name='Hoja1',
+	skiprows=0,
+	usecols='A:C',
+	nrows=3)
