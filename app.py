@@ -13,5 +13,5 @@ df = get_UN_data()
 countries = st.multiselect("Chose countries", list(df.index),["China"])
 data = df.loc[countries]
 data /= 1000000.0
-st.write("### Gross Agricultural Production ($B), data.sort_index())
+st.write("### Gross Agricultural Production ($B)", data.sort_index())
          
